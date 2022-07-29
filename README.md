@@ -5,7 +5,11 @@
 Make sure to remove or move your current `nvim` directory
 
 ```
+# for MacOS and Linux:
 git clone git@github.com:Nazaroni/neovim-config.git ~/.config/nvim
+
+# for Windows:
+git clone git@github.com:Nazaroni/neovim-config.git ~/AppData/Local/nvim
 ```
 
 Run `nvim` and wait for the plugins to be installed

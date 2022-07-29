@@ -6,6 +6,7 @@ local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_cmp_ok then
   return
 end
+
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 
@@ -110,6 +111,7 @@ M.on_attach = function(client, bufnr)
   end
 
   -- if client.name ~= "rust_analyzer" then
+
   if client.name == "pyright" then
     if client.server_capabilities.inlayHintProvider then
       require("lsp-inlayhints").setup_autocmd(bufnr)

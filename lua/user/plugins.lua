@@ -112,7 +112,7 @@ return packer.startup(function(use)
   use "lunarvim/darkplus.nvim"
   use "lunarvim/onedarker.nvim"
 
-  -- cmp plugins
+  -- cmp completions plugins
   use { "hrsh7th/nvim-cmp" }
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions

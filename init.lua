@@ -1,15 +1,10 @@
 local os_info = require "user.get_os_info"
 
-
 vim.opt.termguicolors = true
 
-if os_info.get_os_type() == "mac" then
+if os_info.get_os_type() ~= "linux" then
   vim.api.nvim_exec ('language en_US', true)
-  if os_info.get_os_arch() == "arm64" then
-    -- print(vim.inspect("!!!"))
-  end
 end
-
 
 require "user.keymaps"
 require "user.plugins"
@@ -75,6 +70,8 @@ require "user.harpoon"
 -- require "user.cutlass"
 -- require "user.scope"
 -- require "user.bufferline"
+
+
 -- revisit this
 -- function prequire(package)
 --   local status, lib = pcall(require, package)

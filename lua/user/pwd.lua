@@ -46,5 +46,5 @@ end
 
 -- local result = getScriptDir()
 -- print(vim.inspect(result))
-print(vim.inspect("tada!!!"))
+-- print(vim.inspect("tada!!!"))
 
