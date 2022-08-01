@@ -60,14 +60,22 @@ return {
     },
   },
   server = {
-    --[[
-        $ mkdir -p ~/.local/bin
-        $ curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
-        $ chmod +x ~/.local/bin/rust-analyzer
-    --]]
-    -- cmd = { os.getenv "HOME" .. "/.local/bin/rust-analyzer" },
+    -- installation for MacOS X and Linux
+
+    -- mkdir -p ~/.local/bin
+
+    -- MacOS path:
+    -- curl -L https://github.com/rust-lang/rust-analyzer/releases/download/nightly/rust-analyzer-aarch64-apple-darwin.gz | gunzip -c - > ~/.local/bin/rust-analyzer
+
+    -- Linux path:
+    -- $ curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
+
+    -- chmod +x ~/.local/bin/rust-analyzer
+
+
+    cmd = { os.getenv "HOME" .. "/.local/bin/rust-analyzer" },
     -- cmd = { "rustup", "run", "nightly", os.getenv "HOME" .. "/.local/bin/rust-analyzer" },
-    cmd = { "rustup", "run", "nightly", "/opt/homebrew/bin/rust-analyzer" },
+    -- cmd = { "rustup", "run", "nightly", "/opt/homebrew/bin/rust-analyzer" },
     on_attach = require("user.lsp.handlers").on_attach,
     capabilities = require("user.lsp.handlers").capabilities,
 
