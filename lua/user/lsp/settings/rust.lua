@@ -1,5 +1,24 @@
+local ok, os_info = pcall(require, "user.get_os_info")
+
+if not ok then
+  print("get_os_info plugin is not found")
+  return
+end
+
+local os_type = os_info.get_os_type()
+local my_cmd
+
+if os_type == "windows" then
+  my_cmd = { "C:/progs/lib/rust-analyzer.exe" }	
+else
+  my_cmd = { os.getenv "HOME" .. "/.local/bin/rust-analyzer" }
+end
+
+
 return {
+
   tools = {
+
     on_initialized = function()
       vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "CursorHold", "InsertLeave" }, {
         pattern = { "*.rs" },
@@ -8,6 +27,7 @@ return {
         end,
       })
     end,
+
     inlay_hints = {
       -- Only show inlay hints for the current line
       only_current_line = true,
@@ -60,22 +80,24 @@ return {
     },
   },
   server = {
-    -- installation for MacOS X and Linux
+    -- installation for MacOS X and Linux:
 
-    -- mkdir -p ~/.local/bin
+      -- mkdir -p ~/.local/bin
 
-    -- MacOS path:
-    -- curl -L https://github.com/rust-lang/rust-analyzer/releases/download/nightly/rust-analyzer-aarch64-apple-darwin.gz | gunzip -c - > ~/.local/bin/rust-analyzer
+      -- MacOS path:
+      -- curl -L https://github.com/rust-lang/rust-analyzer/releases/download/nightly/rust-analyzer-aarch64-apple-darwin.gz | gunzip -c - > ~/.local/bin/rust-analyzer
 
-    -- Linux path:
-    -- $ curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
+      -- Linux path:
+      -- $ curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
 
-    -- chmod +x ~/.local/bin/rust-analyzer
+      -- chmod +x ~/.local/bin/rust-analyzer
+
+    -- install for Windows:
+      
+      -- download binary and put to "C:\progs\lib\rust-analyzer.exe" 
 
 
-    cmd = { os.getenv "HOME" .. "/.local/bin/rust-analyzer" },
-    -- cmd = { "rustup", "run", "nightly", os.getenv "HOME" .. "/.local/bin/rust-analyzer" },
-    -- cmd = { "rustup", "run", "nightly", "/opt/homebrew/bin/rust-analyzer" },
+    cmd = my_cmd,
     on_attach = require("user.lsp.handlers").on_attach,
     capabilities = require("user.lsp.handlers").capabilities,
 
@@ -91,6 +113,7 @@ return {
     },
   },
 }
+
 -- return {
 --   settings = {
 --     rust_analyzer = {
