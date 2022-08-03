@@ -2,6 +2,7 @@ local fn = vim.fn
 
 -- Automatically install packer
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+
 if fn.empty(fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = fn.system {
     "git",
@@ -41,6 +42,17 @@ packer.init {
 
 -- Install your plugins here
 return packer.startup(function(use)
+
+local ok, os_info = pcall(require, "user.get_os_info")
+if not ok then
+  print("get_os_info plugin is not found")
+  return
+end
+
+local os_type = os_info.get_os_type()
+local os_arch = os_info.get_os_arch()
+
+
   -- My plugins here
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
@@ -122,11 +134,23 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-emoji"
   use "hrsh7th/cmp-nvim-lua"
   use "zbirenbaum/copilot-cmp"
-  use {
-    "tzachar/cmp-tabnine",
-    run = "./install.sh",
-    requires = "hrsh7th/nvim-cmp",
-  }
+
+  -- there is no TabNine sollution for Linux arm64
+  if os_type == "linux" then
+    if os_arch ~= "arm64" then
+      use {
+        "tzachar/cmp-tabnine",
+        run = "./install.sh",
+        requires = "hrsh7th/nvim-cmp",
+      }
+    end
+  else
+    use {
+      "tzachar/cmp-tabnine",
+      run = "./install.sh",
+      requires = "hrsh7th/nvim-cmp",
+    }
+  end
 
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
@@ -222,7 +246,10 @@ return packer.startup(function(use)
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
+
+
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end
+
 end)

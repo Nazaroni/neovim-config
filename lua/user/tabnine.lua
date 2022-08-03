@@ -1,4 +1,20 @@
 -- M = {}
+local ok, os_info = pcall(require, "user.get_os_info")
+if not ok then
+  print("get_os_info plugin is not found")
+  return
+end
+
+local os_type = os_info.get_os_type()
+local os_arch = os_info.get_os_arch()
+
+-- there is no TabNine sollution for Linux arm64
+if os_type == "linux" then
+  if os_arch == "arm64" then
+    return
+  end
+end
+
 
 local status_ok, tabnine = pcall(require, "cmp_tabnine.config")
 if not status_ok then

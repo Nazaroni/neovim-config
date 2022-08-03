@@ -93,6 +93,7 @@ cmp.setup {
       "s",
     }),
   },
+
   formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
@@ -130,6 +131,7 @@ cmp.setup {
       return vim_item
     end,
   },
+
   sources = {
     { name = "crates", group_index = 1 },
     { name = "nvim_lsp", group_index = 2 },
@@ -141,6 +143,7 @@ cmp.setup {
     { name = "path", group_index = 2 },
     { name = "emoji", group_index = 2 },
   },
+
   sorting = {
     priority_weight = 2,
     comparators = {
@@ -160,10 +163,12 @@ cmp.setup {
       -- require("copilot_cmp.comparators").score,
     },
   },
+
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,
   },
+
   window = {
     documentation = {
       border = "rounded",
@@ -174,6 +179,7 @@ cmp.setup {
       winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
     },
   },
+
   experimental = {
     ghost_text = true,
   },
