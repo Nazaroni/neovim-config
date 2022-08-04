@@ -68,10 +68,12 @@ keymap("o", "L", "$", opts)
 -- keymap("n", "N", "Nzzzv", opts)
 
 -- Naviagate buffers
-keymap("n", "<A-l>", ":bnext<CR>", opts)
-keymap("n", "<A-h>", ":bprevious<CR>", opts)
-keymap("n", "<A-k>", "<Plug>(CybuPrev)", opts)
-keymap("n", "<A-j>", "<Plug>(CybuNext)", opts)
+-- keymap("n", "<A-l>", ":bnext<CR>", opts)       -- redundant, better use cybu
+-- keymap("n", "<A-h>", ":bprevious<CR>", opts)   -- redundant, better use cybu
+
+keymap("n", "<A-k>", "<Plug>(CybuPrev)", opts)    -- more info: lua/user/cybu.lua
+keymap("n", "<A-j>", "<Plug>(CybuNext)", opts)    -- more info: lua/user/cybu.lua
+
 
 -- keymap("n", "<RightMouse>", ":Alpha<CR>", opts)
 

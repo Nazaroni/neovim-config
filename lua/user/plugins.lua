@@ -113,15 +113,16 @@ local os_arch = os_info.get_os_arch()
   use "goolord/alpha-nvim"
   use "folke/which-key.nvim"
   use "folke/zen-mode.nvim"
-  use "karb94/neoscroll.nvim"
+  use "karb94/neoscroll.nvim"           -- Neoscroll: a smooth scrolling neovim plugin
   use "folke/todo-comments.nvim"
   use "andymass/vim-matchup"
   use "is0n/jaq-nvim"
 
   -- Colorschemes
   use "folke/tokyonight.nvim"
-  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+  -- use "lunarvim/colorschemes"            -- A bunch of colorschemes you can try out
   use "lunarvim/darkplus.nvim"
+  use "ellisonleao/gruvbox.nvim"
   use "lunarvim/onedarker.nvim"
 
   -- cmp completions plugins

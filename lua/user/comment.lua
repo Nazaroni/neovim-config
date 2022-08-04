@@ -19,5 +19,5 @@ comment.setup {
       key = ctx.ctype == U.ctype.line and "__default" or "__multiline",
       location = location,
     }
-  end,
+  end
 }

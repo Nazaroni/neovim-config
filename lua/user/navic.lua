@@ -7,6 +7,7 @@ end
 local icons = require "user.icons"
 
 
+-- TODO: check this view on Linux
 navic.setup {
   icons = {
     File = ' ',
@@ -37,6 +38,7 @@ navic.setup {
     TypeParameter = ' '
 
   },
+
   highlight = true,
   separator = " " .. icons.ui.ChevronRight .. " ",
   depth_limit = 0,
