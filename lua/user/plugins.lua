@@ -126,7 +126,7 @@ local os_arch = os_info.get_os_arch()
   use "lunarvim/onedarker.nvim"
 
   -- cmp completions plugins
-  use { "hrsh7th/nvim-cmp" }
+  use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
   use "hrsh7th/cmp-cmdline" -- cmdline completions
@@ -145,6 +145,13 @@ local os_arch = os_info.get_os_arch()
         requires = "hrsh7th/nvim-cmp",
       }
     end
+  elseif os_type == "windows" then
+    use {
+      "tzachar/cmp-tabnine",
+      after = "nvim-cmp",
+      run='powershell ./install.ps1',
+      requires = 'hrsh7th/nvim-cmp'
+    }
   else
     use {
       "tzachar/cmp-tabnine",
