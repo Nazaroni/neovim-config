@@ -55,9 +55,9 @@ local os_arch = os_info.get_os_arch()
 
   -- My plugins here
   use "wbthomason/packer.nvim" -- Have packer manage itself
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+  use "nvim-lua/plenary.nvim" -- All the lua functions I don't want to write twice.
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
-  use "numToStr/Comment.nvim"
+  use "numToStr/Comment.nvim" -- Smart and Powerful commenting plugin for neovim 
   use "nvim-lua/popup.nvim"
   -- use "tiagovla/scope.nvim"
   -- use "akinsho/bufferline.nvim"
