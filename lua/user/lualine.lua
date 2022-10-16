@@ -327,8 +327,8 @@ lualine.setup {
   sections = {
     lualine_a = { mode, branch },
     lualine_b = { diagnostics },
-    -- lualine_c = {},
-    lualine_c = { current_signature },
+    lualine_c = { "filename" },
+    lualine_d = { current_signature },
     -- lualine_x = { diff, spaces, "encoding", filetype },
     lualine_x = { diff, lanuage_server, spaces, filetype },
     lualine_y = { progress },
@@ -337,7 +337,7 @@ lualine.setup {
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = {},
+    lualine_c = { "filename" },
     lualine_x = { "location" },
     lualine_y = {},
     lualine_z = {},
